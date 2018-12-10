@@ -2,7 +2,15 @@ import datetime
 """
 Holds the data for the cli app
 """
-users = []
+users = [{
+    "username" :'Joe',
+    "user_id": 1,
+    "password":'1234',
+    "last_logged_in": datetime.datetime.now(),
+    "is_admin": False,
+    "is_moderator": False,
+    "is_logged_in": True
+}]
 comments = []
 class User():
     """
@@ -20,7 +28,8 @@ class User():
         self.is_logged_in = False
         self.comment = comments
         self.password = ''
-        self.signup("Joe","1234")
+        # self.signup("Joe","1234",False, True)
+      
     def signup(self,username,password,is_admin=False,is_moderator=False):
         """
             This method registers the user to the app
@@ -32,7 +41,7 @@ class User():
         self.users.append(self)
         
         for user in self.users:
-            if username  == user.username:
+            if username  == user['username']:
                 print("Username already exists")
                 return False
             else:
@@ -43,19 +52,19 @@ class User():
                 self.is_moderator = is_moderator
                 self.users.append(self)
                 print("Successful signup")
-                return True
+                return self
 
 
     def login(self,username, password):
         """ This method logs in a registered user
         """
-        self.is_admin = is_admin
+
         for user in self.users:
-            if user.username == username and user.password == password:
-                user.last_logged_in = datetime.datetime.now()
-                user.is_logged_in  = True
+            if user['username'] == username and user['password'] == password:
+                user['last_logged_in'] = datetime.datetime.now()
+                user['is_logged_in']  = True
                 print("Login successful")
-                return True
+                return user
         print("Login failed")
         return False
 
@@ -91,9 +100,9 @@ class Moderator(User):
             This method can delete a comment from any user.
         """
         if self.is_moderator or self.is_admin:
-            for comment in self.comments:
+            for comment in self.comment:
                 if comment["id"] == message_id:
-                    self.comments.remove(comment)
+                    self.comment.remove(comment)
                     print ("Comment has been deleted")
                     return
                 print("Message: No comment found")

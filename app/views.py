@@ -18,11 +18,11 @@ if welcome == 1:
         3 => views comment \n \
         4 => exit \n \
         ")
-        choice =  input("Choice +>")
+        choice =  int(input("Choice +>"))
 
         if choice == 1:
             msg = input("Enter the comment \n")
-            a_comment = Comment.create_comment(msg,u.user_id,random.random(0,6))
+            a_comment = Comment().create_comment(msg,u['user_id'],1)
             print("Comment saved")
             print(a_comment)
 
