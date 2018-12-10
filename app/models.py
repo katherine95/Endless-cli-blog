@@ -47,7 +47,7 @@ class Moderator(User):
         """
         pass
 
-class Admin(User):
+class Admin(Moderator):
     """ 
         This class holds mthods for the admin user
     """
