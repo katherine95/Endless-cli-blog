@@ -1,5 +1,5 @@
 # Endless-cli-blog
-
+The app provides a platform where users can login , comment and edit their own comments.
 ## Users: 
 > Users come in 3 roles: normal users, moderators, and admins.
 ```
@@ -25,3 +25,23 @@ Moderator is a User Moderators can only edit their own comments Moderators can d
 ```
 Admin is both a User and a Moderator Admins can edit any comments Admins can delete any comments Comments contain a reference to the User who created it (author)
 ```
+## How to use
+> to Use the app
+* clone the repo
+
+`git clone https://github.com/katherine95/Endless-cli-blog.git`
+
+* cd into the project folder and run
+
+` python run.py `
+
+* You will be prompted with login or sign up
+
+## Contributors
+* Catherine Chepkirui
+* Lawrence Chege
+* Kyppy Simani
+* Joseph Mutiga
+
+[Pivotal tracker] (https://www.pivotaltracker.com/n/projects/2230917)
+
