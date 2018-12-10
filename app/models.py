@@ -1,7 +1,8 @@
 """
 Holds the data for the cli app
 """
-
+users = []
+comments = []
 class User():
     """
         This class holds methods for the user 
@@ -10,14 +11,25 @@ class User():
         """
             This constructor initializes the user class
         """
-        pass
+        self.users = users    
+        self.last_logged_in = ""
+        self.is_admin = False
+        self.is_moderator =  False
+        self.username = username
+        self.is_logged_in = False
+        self.comment = comments
+        self.password = password
 
-
-    def signup(self):
+    def signup(self,username,password,is_admin=False,is_moderator=False):
         """
             This method registers the user to the app
         """
-        pass
+        self.username = username
+        self.password = password
+        self.is_admin = is_admin
+        self.is_moderator = is_moderator
+        self.users.append(self)
+
 
     def login(self):
         """ This method logs in a registered user
@@ -41,11 +53,21 @@ class Moderator(User):
     """ 
         this class holds methods for the moderator
     """
-    def delete_comment(self):
+    def delete_comment(self, message_id):
         """
-            This method can delete a comment from any user
+            This method can delete a comment from any user.
         """
-        pass
+        if self.is_moderator:
+            for comment in self.comments
+            if comment["id"] = message_id:
+                self.comments.remove(comment)
+                print ("Comment has been deleted")
+                return
+            print("Message":"No comment found")
+            return
+        print("Not authorized to delete comments")
+        return
+          
 
 class Admin(Moderator):
     """ 
