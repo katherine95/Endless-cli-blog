@@ -1,7 +1,9 @@
+import datetime
 """
 Holds the data for the cli app
 """
-
+users = []
+comments = []
 class User():
     """
         This class holds methods for the user 
@@ -10,26 +12,25 @@ class User():
         """
             This constructor initializes the user class
         """
+        self.users = users    
+        self.last_logged_in = ""
+        self.is_admin = False
+        self.is_moderator =  False
+        self.username = ''
+        self.is_logged_in = False
+        self.comment = comments
 
-
-    def signup(self):
+    def signup(self,username,):
         """
             This method registers the user to the app
         """
-        pass
+        
 
     def login(self):
         """ This method logs in a registered user
         """
         pass
 
-    def create_my_comment(self, message, date, author):
-        """ 
-            This method creates a comment for a logged in user
-        """
-        if self.is_logged_in == True:
-            comments.append(comment)
-        return self.login()
 
     def edit_comment(self):
         """
@@ -59,9 +60,23 @@ class Admin(Moderator):
         """
         pass
 
-class Comment():
+class Comment(object):
 
     def __init__(self):
-        comment_details = {}
+        """ 
+            This method creates a comment for a logged in user
+        """
+        self.comment = comments
 
-        comment
+    def create_comment(self, message, author, createdAt, reply):
+        comment_details = {}
+        comment_details['author'] = author
+        comment_details['message'] = message
+        comment_details['createdAt'] = datetime.datetime.now()
+        comment_details['reply'] = reply
+        comment_details['id'] = len(comments) + 1
+
+        comments.append(comment_details)
+        return comment_details
+
+
