@@ -38,11 +38,26 @@ class User():
         pass
 
 
-    def edit_comment(self):
+    def edit_comment(self, message_id, comment):
         """
             This method edits a comment from a logged in user
         """
-        pass
+        if self.is_logged_in:
+            comments = [comment for comment in self.comment if comment['id'] == message_id]
+            comment = comments[0]
+            if comment:
+                if comment['author'] == self.user_id:                    
+                    comment.update('comment', comment)
+                    print("comment successfully updated ")
+                    return "comment successfully updated"
+                print(" you do not have permissions to edit this comment")
+                return "You do not have permission to edit this comment"
+            print('comment not found')
+            return "comment not found"
+        print('please log in first')
+        return "Please log in first"
+
+
 
 
 
@@ -60,7 +75,7 @@ class Admin(Moderator):
     """ 
         This class holds mthods for the admin user
     """
-    def edit_any_comment(self):
+    def edit_any_comment(self, message_id):
         """ 
             An admin can edit any comment
         """
@@ -84,5 +99,7 @@ class Comment(object):
 
         comments.append(comment_details)
         return comment_details
+
+
 
 
