@@ -20,12 +20,17 @@ class User():
         self.is_logged_in = False
         self.comment = comments
         self.password = password
-        
 
     def signup(self,username,password,is_admin=False,is_moderator=False):
         """
             This method registers the user to the app
         """
+        self.username = username
+        self.password = password
+        self.is_admin = is_admin
+        self.is_moderator = is_moderator
+        self.users.append(self)
+        
         for user in self.users:
             if username  == user.username:
                 print("Username already exists")
@@ -80,11 +85,21 @@ class Moderator(User):
     """ 
         this class holds methods for the moderator
     """
-    def delete_comment(self):
+    def delete_comment(self, message_id):
         """
-            This method can delete a comment from any user
+            This method can delete a comment from any user.
         """
-        pass
+        if self.is_moderator or self.is_admin:
+            for comment in self.comments
+            if comment["id"] = message_id:
+                self.comments.remove(comment)
+                print ("Comment has been deleted")
+                return
+            print("Message":"No comment found")
+            return
+        print("Not authorized to delete comments")
+        return
+          
 
 class Admin(Moderator):
     """ 
@@ -94,6 +109,7 @@ class Admin(Moderator):
         """ 
             An admin can edit any comment
         """
+        pass
         if self.is_logged_in and self.is_admin:
             comments = [comment for comment in self.comment if comment['id'] == message_id]
             comment = comments[0]
@@ -124,7 +140,3 @@ class Comment(object):
 
         comments.append(comment_details)
         return comment_details
-
-
-
-
