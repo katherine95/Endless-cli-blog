@@ -2,13 +2,15 @@ from models import User
 from models import Comment
 import random
 
+user = User()
 
 print("WELCOME TO CLI_BLOG")
 welcome = input('Enter 1 => login 2=> Sign Up \n')
+welcome = int(welcome)
 if welcome == 1:
     username = str(input("please enter Username \n"))
     password = str(input("please enter Password \n"))
-    u = User.login(username, password)
+    u = user.login(username, password)
     if u:
         print("Welcome")
         print(" 1 => create comment \n \

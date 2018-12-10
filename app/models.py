@@ -8,7 +8,7 @@ class User():
     """
         This class holds methods for the user 
     """
-    def __init__(self, username, password):
+    def __init__(self):
         """
             This constructor initializes the user class
         """
@@ -16,11 +16,11 @@ class User():
         self.last_logged_in = ""
         self.is_admin = False
         self.is_moderator =  False
-        self.username = username
+        self.username = ""
         self.is_logged_in = False
         self.comment = comments
-        self.password = password
-
+        self.password = ''
+        self.signup("Joe","1234")
     def signup(self,username,password,is_admin=False,is_moderator=False):
         """
             This method registers the user to the app
@@ -49,6 +49,7 @@ class User():
     def login(self,username, password):
         """ This method logs in a registered user
         """
+        self.is_admin = is_admin
         for user in self.users:
             if user.username == username and user.password == password:
                 user.last_logged_in = datetime.datetime.now()
