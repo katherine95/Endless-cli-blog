@@ -10,7 +10,6 @@ class User():
         """
             This constructor initializes the user class
         """
-        pass
 
 
     def signup(self):
@@ -24,17 +23,20 @@ class User():
         """
         pass
 
-    def create_my_comment(self):
+    def create_my_comment(self, message, date, author):
         """ 
             This method creates a comment for a logged in user
         """
-        pass
+        if self.is_logged_in == True:
+            comments.append(comment)
+        return self.login()
 
     def edit_comment(self):
         """
             This method edits a comment from a logged in user
         """
         pass
+
 
 
 class Moderator(User):
@@ -56,3 +58,10 @@ class Admin(Moderator):
             An admin can edit any comment
         """
         pass
+
+class Comment():
+
+    def __init__(self):
+        comment_details = {}
+
+        comment
