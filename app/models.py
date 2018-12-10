@@ -15,15 +15,21 @@ class User():
         self.last_logged_in = ""
         self.is_admin = False
         self.is_moderator =  False
-        self.username = ''
+        self.username = username
         self.is_logged_in = False
         self.comment = comments
+        self.password = password
 
-    def signup(self,username,):
+    def signup(self,username,password,is_admin=False,is_moderator=False):
         """
             This method registers the user to the app
         """
-        
+        self.username = username
+        self.password = password
+        self.is_admin = is_admin
+        self.is_moderator = is_moderator
+        self.users.append(self)
+
 
     def login(self):
         """ This method logs in a registered user
