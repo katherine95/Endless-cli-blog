@@ -8,7 +8,7 @@ class User():
     """
         This class holds methods for the user 
     """
-    def __init__(self):
+    def __init__(self, username, password):
         """
             This constructor initializes the user class
         """
@@ -76,7 +76,6 @@ class User():
 
 
 
-
 class Moderator(User):
     """ 
         this class holds methods for the moderator
@@ -115,7 +114,7 @@ class Comment(object):
         """
         self.comment = comments
 
-    def create_comment(self, message, author, createdAt, reply):
+    def create_comment(self, message, author, reply):
         comment_details = {}
         comment_details['author'] = author
         comment_details['message'] = message
