@@ -75,11 +75,21 @@ class Admin(Moderator):
     """ 
         This class holds mthods for the admin user
     """
-    def edit_any_comment(self, message_id):
+    def edit_any_comment(self, message_id, comment):
         """ 
             An admin can edit any comment
         """
-        pass
+        if self.is_logged_in and self.is_admin:
+            comments = [comment for comment in self.comment if comment['id'] == message_id]
+            comment = comments[0]
+            if comment:
+                comment.update('comment', comment)
+                print("comment successfully updated ")
+                return "comment successfully updated"
+            print("comment does not exist")
+            return "comment does not exist"
+        print("You do not have permissions to edit any comment")
+        return "You do not have permission to edit any comment "
 
 class Comment(object):
 
