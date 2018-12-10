@@ -1,3 +1,4 @@
+import datetime
 """
 Holds the data for the cli app
 """
@@ -36,17 +37,13 @@ class User():
         """
         pass
 
-    def create_my_comment(self):
-        """ 
-            This method creates a comment for a logged in user
-        """
-        pass
 
     def edit_comment(self):
         """
             This method edits a comment from a logged in user
         """
         pass
+
 
 
 class Moderator(User):
@@ -68,5 +65,24 @@ class Admin(Moderator):
             An admin can edit any comment
         """
         pass
+
+class Comment(object):
+
+    def __init__(self):
+        """ 
+            This method creates a comment for a logged in user
+        """
+        self.comment = comments
+
+    def create_comment(self, message, author, createdAt, reply):
+        comment_details = {}
+        comment_details['author'] = author
+        comment_details['message'] = message
+        comment_details['createdAt'] = datetime.datetime.now()
+        comment_details['reply'] = reply
+        comment_details['id'] = len(comments) + 1
+
+        comments.append(comment_details)
+        return comment_details
 
 
