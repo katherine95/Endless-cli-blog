@@ -1,3 +1,4 @@
+import datetime
 """
 Holds the data for the cli app
 """
@@ -19,22 +20,38 @@ class User():
         self.is_logged_in = False
         self.comment = comments
         self.password = password
+        
 
     def signup(self,username,password,is_admin=False,is_moderator=False):
         """
             This method registers the user to the app
         """
-        self.username = username
-        self.password = password
-        self.is_admin = is_admin
-        self.is_moderator = is_moderator
-        self.users.append(self)
+        for user in self.users:
+            if username  == user.username:
+                print("Username already exists")
+                return False
+            else:
+                self.user_id = len(self.users) + 1
+                self.username = username
+                self.password = password
+                self.is_admin = is_admin
+                self.is_moderator = is_moderator
+                self.users.append(self)
+                print("Successful signup")
+                return True
 
 
-    def login(self):
+    def login(self,username, password):
         """ This method logs in a registered user
         """
-        pass
+        for user in self.users:
+            if user.username == username and user.password == password:
+                user.last_logged_in = datetime.datetime.now()
+                user.is_logged_in  = True
+                print("Login successful")
+                return True
+        print("Login failed")
+        return False
 
     def create_my_comment(self):
         """ 
