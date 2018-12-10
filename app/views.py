@@ -1,14 +1,15 @@
-from .models import User
-from .models import Comment
+from models import User
+from models import Comment
 import random
-import pprint
+
 
 print("WELCOME TO CLI_BLOG")
-welcome = input('Enter 1 => login 2=> Sign Up')
+welcome = input('Enter 1 => login 2=> Sign Up \n')
 if welcome == 1:
-    username = input("please enter Username")
-    password = input("please enter Password")
-    if (u = User.login(username, password)):
+    username = str(input("please enter Username \n"))
+    password = str(input("please enter Password \n"))
+    u = User.login(username, password)
+    if u:
         print("Welcome")
         print(" 1 => create comment \n \
         2 => edit comment \n \
@@ -18,10 +19,10 @@ if welcome == 1:
         choice =  input("Choice +>")
 
         if choice == 1:
-            msg = input("Enter the comment")
-            a_comment = Comment.create_comment(msg,u.user_id,random(0,6))
+            msg = input("Enter the comment \n")
+            a_comment = Comment.create_comment(msg,u.user_id,random.random(0,6))
             print("Comment saved")
-            pprint.print(a_comment)
+            print(a_comment)
 
         elif choice == 2:
             input("")

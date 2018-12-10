@@ -90,13 +90,13 @@ class Moderator(User):
             This method can delete a comment from any user.
         """
         if self.is_moderator or self.is_admin:
-            for comment in self.comments
-            if comment["id"] = message_id:
-                self.comments.remove(comment)
-                print ("Comment has been deleted")
+            for comment in self.comments:
+                if comment["id"] == message_id:
+                    self.comments.remove(comment)
+                    print ("Comment has been deleted")
+                    return
+                print("Message: No comment found")
                 return
-            print("Message":"No comment found")
-            return
         print("Not authorized to delete comments")
         return
           
