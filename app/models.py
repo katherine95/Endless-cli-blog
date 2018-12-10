@@ -1,7 +1,8 @@
 """
 Holds the data for the cli app
 """
-
+users = []
+comments = []
 class User():
     """
         This class holds methods for the user 
@@ -10,14 +11,19 @@ class User():
         """
             This constructor initializes the user class
         """
-        pass
+        self.users = users    
+        self.last_logged_in = ""
+        self.is_admin = False
+        self.is_moderator =  False
+        self.username = ''
+        self.is_logged_in = False
+        self.comment = comments
 
-
-    def signup(self):
+    def signup(self,username,):
         """
             This method registers the user to the app
         """
-        pass
+        
 
     def login(self):
         """ This method logs in a registered user
@@ -56,3 +62,5 @@ class Admin(Moderator):
             An admin can edit any comment
         """
         pass
+
+
